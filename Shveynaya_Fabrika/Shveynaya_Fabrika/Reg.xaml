@@ -1,0 +1,46 @@
+﻿<Window x:Class="Shveynaya_Fabrika.Reg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Icon="resources\logo-01.jpg"
+        Title="Регистрация" Height="400" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!--<TextBlock Text="А в т о р и з а ц и я" HorizontalAlignment="Center" FontSize="18px" Margin="0,10,0,0"/>-->
+        <Image Source="C:\Users\zrust\source\repos\Shveynaya_Fabrika\Shveynaya_Fabrika\resources\logo-01.jpg" Width="400" Height="150" Margin="0,-50,0,0"></Image>
+        <TextBlock Text="Логин" Grid.Row="1" HorizontalAlignment="Center" Margin="0,-50,0,0"/>
+        <TextBox Grid.Row="2" HorizontalAlignment="Center"  Margin="0,-45,0,0" Name="Login"/>
+
+        <TextBlock Text="Имя" Grid.Row="3" HorizontalAlignment="Center" Margin="0,-10,0,0" />
+        <TextBox Grid.Row="4" HorizontalAlignment="Center" Name="Name"/>
+        
+        <TextBlock Grid.Row="5" Text="Пароль" HorizontalAlignment="Center" />
+        <PasswordBox Grid.Row="6" HorizontalAlignment="Center"  Name="Password"/>
+        
+        <TextBlock Grid.Row="7" Text="Повторите пароль" HorizontalAlignment="Center" />
+        <PasswordBox Grid.Row="8" HorizontalAlignment="Center"  Name="Password1"/>
+       
+        <Label Grid.Row="9" HorizontalAlignment="Center">
+            <Hyperlink Click="Hyperlink_Click">
+                <Label>Уже есть аккаунт?</Label>
+            </Hyperlink>
+        </Label>
+        <Button Click="Button_Click" Grid.Row="10" Content="Создать аккаунт" HorizontalAlignment="Center"
+                Margin="0,10,0,0"/>
+    </Grid>
+</Window>

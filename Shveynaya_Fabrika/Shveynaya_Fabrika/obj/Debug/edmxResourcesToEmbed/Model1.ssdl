@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище SFabricaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AppUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Login" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="Role" Type="int" />
+  </EntityType>
+  <EntityType Name="Cvet">
+    <Key>
+      <PropertyRef Name="Nomer" />
+    </Key>
+    <Property Name="Nomer" Type="float" Nullable="false" />
+    <Property Name="Cvet" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "SFabrica.dbo.CvetTkani" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="CvetTkani">
+    <Key>
+      <PropertyRef Name="Articul" />
+      <PropertyRef Name="NomerCveta" />
+    </Key>
+    <Property Name="Articul" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NomerCveta" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Furnitura">
+    <Key>
+      <PropertyRef Name="Articul" />
+    </Key>
+    <Property Name="Articul" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Naimenovanie" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Shirina" Type="float" Nullable="false" />
+    <Property Name="Dlina" Type="float" />
+    <Property Name="Cena" Type="money" Nullable="false" />
+    <Property Name="Ves" Type="float" />
+  </EntityType>
+  <EntityType Name="Izdeliya">
+    <Key>
+      <PropertyRef Name="Articul" />
+    </Key>
+    <Property Name="Articul" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Naimenovanie" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Shirina" Type="float" Nullable="false" />
+    <Property Name="Dlina" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Risunok">
+    <Key>
+      <PropertyRef Name="Nomer" />
+    </Key>
+    <Property Name="Nomer" Type="float" Nullable="false" />
+    <Property Name="Risunok" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "SFabrica.dbo.RisunokTkani" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="RisunokTkani">
+    <Key>
+      <PropertyRef Name="Articul" />
+      <PropertyRef Name="Nomer" />
+    </Key>
+    <Property Name="Articul" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Nomer" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Sostav">
+    <Key>
+      <PropertyRef Name="Nomer" />
+    </Key>
+    <Property Name="Nomer" Type="float" Nullable="false" />
+    <Property Name="Sostav" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "SFabrica.dbo.SostavTkani" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="SostavTkani">
+    <Key>
+      <PropertyRef Name="Articul" />
+      <PropertyRef Name="NomerSostava" />
+    </Key>
+    <Property Name="Articul" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NomerSostava" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Tip">
+    <Key>
+      <PropertyRef Name="Nomer" />
+    </Key>
+    <Property Name="Nomer" Type="float" Nullable="false" />
+    <Property Name="Tip" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "SFabrica.dbo.TipFurnituri" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="TipFurnituri">
+    <Key>
+      <PropertyRef Name="Articul" />
+      <PropertyRef Name="NomerTipa" />
+    </Key>
+    <Property Name="Articul" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NomerTipa" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tkani">
+    <Key>
+      <PropertyRef Name="Articul" />
+    </Key>
+    <Property Name="Articul" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Nazvanie" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Shirina" Type="float" Nullable="false" />
+    <Property Name="Dlina" Type="float" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TkaniIzdeliya">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdTkani" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdIzdeliya" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__AppUser__Role__09A971A2">
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="AppUser" Type="Self.AppUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AppUser">
+        <PropertyRef Name="Role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TkaniIzde__IdIzd__3B40CD36">
+    <End Role="Izdeliya" Type="Self.Izdeliya" Multiplicity="1" />
+    <End Role="TkaniIzdeliya" Type="Self.TkaniIzdeliya" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Izdeliya">
+        <PropertyRef Name="Articul" />
+      </Principal>
+      <Dependent Role="TkaniIzdeliya">
+        <PropertyRef Name="IdIzdeliya" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TkaniIzde__IdTka__3A4CA8FD">
+    <End Role="Tkani" Type="Self.Tkani" Multiplicity="1" />
+    <End Role="TkaniIzdeliya" Type="Self.TkaniIzdeliya" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tkani">
+        <PropertyRef Name="Articul" />
+      </Principal>
+      <Dependent Role="TkaniIzdeliya">
+        <PropertyRef Name="IdTkani" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CvetTkani_Cvet">
+    <End Role="Cvet" Type="Self.Cvet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CvetTkani" Type="Self.CvetTkani" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cvet">
+        <PropertyRef Name="Nomer" />
+      </Principal>
+      <Dependent Role="CvetTkani">
+        <PropertyRef Name="NomerCveta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CvetTkani_Tkani">
+    <End Role="Tkani" Type="Self.Tkani" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CvetTkani" Type="Self.CvetTkani" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tkani">
+        <PropertyRef Name="Articul" />
+      </Principal>
+      <Dependent Role="CvetTkani">
+        <PropertyRef Name="Articul" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RisunokTkani_Risunok">
+    <End Role="Risunok" Type="Self.Risunok" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RisunokTkani" Type="Self.RisunokTkani" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Risunok">
+        <PropertyRef Name="Nomer" />
+      </Principal>
+      <Dependent Role="RisunokTkani">
+        <PropertyRef Name="Nomer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RisunokTkani_Tkani">
+    <End Role="Tkani" Type="Self.Tkani" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RisunokTkani" Type="Self.RisunokTkani" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tkani">
+        <PropertyRef Name="Articul" />
+      </Principal>
+      <Dependent Role="RisunokTkani">
+        <PropertyRef Name="Articul" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SostavTkani_Sostav">
+    <End Role="Sostav" Type="Self.Sostav" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SostavTkani" Type="Self.SostavTkani" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sostav">
+        <PropertyRef Name="Nomer" />
+      </Principal>
+      <Dependent Role="SostavTkani">
+        <PropertyRef Name="NomerSostava" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SostavTkani_Tkani">
+    <End Role="Tkani" Type="Self.Tkani" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SostavTkani" Type="Self.SostavTkani" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tkani">
+        <PropertyRef Name="Articul" />
+      </Principal>
+      <Dependent Role="SostavTkani">
+        <PropertyRef Name="Articul" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TipFurnituri_Furnitura">
+    <End Role="Furnitura" Type="Self.Furnitura" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TipFurnituri" Type="Self.TipFurnituri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Furnitura">
+        <PropertyRef Name="Articul" />
+      </Principal>
+      <Dependent Role="TipFurnituri">
+        <PropertyRef Name="Articul" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TipFurnituri_Tip">
+    <End Role="Tip" Type="Self.Tip" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TipFurnituri" Type="Self.TipFurnituri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tip">
+        <PropertyRef Name="Nomer" />
+      </Principal>
+      <Dependent Role="TipFurnituri">
+        <PropertyRef Name="NomerTipa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище SFabricaModelContainer">
+    <EntitySet Name="AppUser" EntityType="Self.AppUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cvet" EntityType="Self.Cvet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Furnitura" EntityType="Self.Furnitura" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Izdeliya" EntityType="Self.Izdeliya" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Risunok" EntityType="Self.Risunok" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sostav" EntityType="Self.Sostav" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tip" EntityType="Self.Tip" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tkani" EntityType="Self.Tkani" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TkaniIzdeliya" EntityType="Self.TkaniIzdeliya" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CvetTkani" EntityType="Self.CvetTkani" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CvetTkani].[Articul] AS [Articul], 
+    [CvetTkani].[NomerCveta] AS [NomerCveta]
+    FROM [dbo].[CvetTkani] AS [CvetTkani]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="RisunokTkani" EntityType="Self.RisunokTkani" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [RisunokTkani].[Articul] AS [Articul], 
+    [RisunokTkani].[Nomer] AS [Nomer]
+    FROM [dbo].[RisunokTkani] AS [RisunokTkani]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="SostavTkani" EntityType="Self.SostavTkani" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SostavTkani].[Articul] AS [Articul], 
+    [SostavTkani].[NomerSostava] AS [NomerSostava]
+    FROM [dbo].[SostavTkani] AS [SostavTkani]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TipFurnituri" EntityType="Self.TipFurnituri" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TipFurnituri].[Articul] AS [Articul], 
+    [TipFurnituri].[NomerTipa] AS [NomerTipa]
+    FROM [dbo].[TipFurnituri] AS [TipFurnituri]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__AppUser__Role__09A971A2" Association="Self.FK__AppUser__Role__09A971A2">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="AppUser" EntitySet="AppUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TkaniIzde__IdIzd__3B40CD36" Association="Self.FK__TkaniIzde__IdIzd__3B40CD36">
+      <End Role="Izdeliya" EntitySet="Izdeliya" />
+      <End Role="TkaniIzdeliya" EntitySet="TkaniIzdeliya" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TkaniIzde__IdTka__3A4CA8FD" Association="Self.FK__TkaniIzde__IdTka__3A4CA8FD">
+      <End Role="Tkani" EntitySet="Tkani" />
+      <End Role="TkaniIzdeliya" EntitySet="TkaniIzdeliya" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CvetTkani_Cvet" Association="Self.FK_CvetTkani_Cvet">
+      <End Role="Cvet" EntitySet="Cvet" />
+      <End Role="CvetTkani" EntitySet="CvetTkani" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CvetTkani_Tkani" Association="Self.FK_CvetTkani_Tkani">
+      <End Role="Tkani" EntitySet="Tkani" />
+      <End Role="CvetTkani" EntitySet="CvetTkani" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RisunokTkani_Risunok" Association="Self.FK_RisunokTkani_Risunok">
+      <End Role="Risunok" EntitySet="Risunok" />
+      <End Role="RisunokTkani" EntitySet="RisunokTkani" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RisunokTkani_Tkani" Association="Self.FK_RisunokTkani_Tkani">
+      <End Role="Tkani" EntitySet="Tkani" />
+      <End Role="RisunokTkani" EntitySet="RisunokTkani" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SostavTkani_Sostav" Association="Self.FK_SostavTkani_Sostav">
+      <End Role="Sostav" EntitySet="Sostav" />
+      <End Role="SostavTkani" EntitySet="SostavTkani" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SostavTkani_Tkani" Association="Self.FK_SostavTkani_Tkani">
+      <End Role="Tkani" EntitySet="Tkani" />
+      <End Role="SostavTkani" EntitySet="SostavTkani" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TipFurnituri_Furnitura" Association="Self.FK_TipFurnituri_Furnitura">
+      <End Role="Furnitura" EntitySet="Furnitura" />
+      <End Role="TipFurnituri" EntitySet="TipFurnituri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TipFurnituri_Tip" Association="Self.FK_TipFurnituri_Tip">
+      <End Role="Tip" EntitySet="Tip" />
+      <End Role="TipFurnituri" EntitySet="TipFurnituri" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
